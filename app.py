@@ -9,7 +9,7 @@ PLAYER_IDS = {
     "M8 PodaSai": "781c9df9b5f1483a9d06de87be5467aa",
     "xsweeze2005": "95b8c65a16ec4322824da21fe511371a",
     "akiirarr": "077d69a8f1ea43e4bf8f1273dc0b5aa5",
-    "KC Merstachă": "5bec82879fbf436887597f49d9bcc7c3",
+    "KC Merstach!": "5bec82879fbf436887597f49d9bcc7c3",
 }
 
 # Placeholder data
