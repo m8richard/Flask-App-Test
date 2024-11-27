@@ -14,7 +14,7 @@ PLAYER_IDS = {
 
 # Placeholder data
 MOCK_DATA = [
-    # Global stats for each player
+    # Global stats for M8 Vanyak3k
     {
         "epic_id": "79f1994f55eb4931a148935efa188b2f",
         "epic_username": "M8 Vanyak3k",
@@ -32,7 +32,25 @@ MOCK_DATA = [
         "damageToPlayers": 20000,
         "healthTaken": 15000
     },
-    # Tournament stats for a player
+    # Add global stats for other players
+    {
+        "epic_id": "781c9df9b5f1483a9d06de87be5467aa",
+        "epic_username": "M8 PodaSai",
+        "event_id": "",
+        "window_id": "",
+        "matchesPlayed": 80,
+        "humanElims": 200,
+        "top1": 8,
+        "deaths": 72,
+        "playersRevived": 15,
+        "playersRebooted": 4,
+        "shieldTaken": 4000,
+        "hits": 1800,
+        "shots": 3500,
+        "damageToPlayers": 18000,
+        "healthTaken": 12000
+    },
+    # Tournament example for M8 Vanyak3k
     {
         "epic_id": "79f1994f55eb4931a148935efa188b2f",
         "epic_username": "M8 Vanyak3k",

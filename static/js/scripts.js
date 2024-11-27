@@ -82,7 +82,9 @@ const utils = {
 // UI Update Functions
 const ui = {
     updateTournamentOptions() {
+        console.log('Updating tournament options...');
         const selectedPlayer = elements.playerSelect.value;
+        console.log('Selected player:', selectedPlayer);
         elements.tournamentSelect.innerHTML = '<option value="">Select a tournament</option>';
         elements.windowSelect.innerHTML = '<option value="">Select a window</option>';
         
@@ -136,8 +138,12 @@ const ui = {
     },
 
     updateStatsDisplay() {
+        console.log('Updating stats display...');
         const selectedPlayer = elements.playerSelect.value;
+        console.log('Selected player:', selectedPlayer);
+        
         if (!selectedPlayer) {
+            console.log('No player selected, clearing display');
             elements.statsDisplay.innerHTML = '';
             return;
         }
@@ -207,12 +213,14 @@ const ui = {
     },
 
     toggleTheme() {
+        console.log('Toggling theme...');
         state.darkMode = !state.darkMode;
         document.body.classList.toggle('dark-theme');
         document.body.classList.toggle('light-theme');
         elements.themeToggle.innerHTML = state.darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
         elements.themeToggle.classList.toggle('btn-light');
         elements.themeToggle.classList.toggle('btn-dark');
+        console.log('Theme toggled:', state.darkMode ? 'dark' : 'light');
     }
 };
 
@@ -246,7 +254,7 @@ const handlers = {
 // Initialize
 async function initialize() {
     try {
-        // Set initial theme
+        // Set initial theme first
         document.body.classList.add('light-theme');
         
         // Add event listeners
@@ -258,7 +266,13 @@ async function initialize() {
         
         // Fetch initial data
         state.statsData = await api.fetchStats();
-        ui.updateTournamentOptions();
+        if (state.statsData && state.statsData.length > 0) {
+            ui.updateTournamentOptions();
+            // If a player is already selected, update the display
+            if (elements.playerSelect.value) {
+                ui.updateStatsDisplay();
+            }
+        }
     } catch (error) {
         components.showError(error.message);
     }
