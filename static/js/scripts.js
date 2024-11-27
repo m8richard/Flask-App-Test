@@ -213,14 +213,39 @@ const ui = {
     },
 
     toggleTheme() {
-        console.log('Toggling theme...');
-        state.darkMode = !state.darkMode;
-        document.body.classList.toggle('dark-theme');
-        document.body.classList.toggle('light-theme');
-        elements.themeToggle.innerHTML = state.darkMode ? '☀️ Light Mode' : '🌙 Dark Mode';
-        elements.themeToggle.classList.toggle('btn-light');
-        elements.themeToggle.classList.toggle('btn-dark');
-        console.log('Theme toggled:', state.darkMode ? 'dark' : 'light');
+        try {
+            console.log('Theme toggle clicked');
+            
+            // Toggle state
+            state.darkMode = !state.darkMode;
+            console.log('Dark mode:', state.darkMode);
+
+            // Toggle body classes
+            if (state.darkMode) {
+                document.body.classList.remove('light-theme');
+                document.body.classList.add('dark-theme');
+            } else {
+                document.body.classList.remove('dark-theme');
+                document.body.classList.add('light-theme');
+            }
+
+            // Update button
+            const button = elements.themeToggle;
+            if (state.darkMode) {
+                button.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+                button.classList.remove('btn-dark');
+                button.classList.add('btn-light');
+            } else {
+                button.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+                button.classList.remove('btn-light');
+                button.classList.add('btn-dark');
+            }
+
+            console.log('Theme toggle complete');
+        } catch (error) {
+            console.error('Error in toggleTheme:', error);
+            components.showError('Failed to toggle theme');
+        }
     }
 };
 
